@@ -1,3 +1,6 @@
+import MenuIcon from "@mui/icons-material/Menu";
+import { Button, Typography } from "@mui/material";
+
 export const AppHeader = () => {
   return (
     <div
@@ -9,6 +12,13 @@ export const AppHeader = () => {
         width: "100vw",
         height: "80px",
       }}
-    ></div>
+    >
+      <Typography variant="h3" sx={{ color: "white" }}>
+        Weather App
+      </Typography>
+      <Button onClick={() => {}} sx={{ color: "white" }}>
+        <MenuIcon />
+      </Button>
+    </div>
   );
 };
