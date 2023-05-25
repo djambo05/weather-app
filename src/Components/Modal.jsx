@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import { Button, TextField, Typography } from "@mui/material";
-const Modal = ({ open, handleClose }) => (
+const Modal = ({ open, handleClose, handleOnChangeCity, temp }) => (
   <div
     style={{
       position: "absolute",
@@ -41,21 +41,21 @@ const Modal = ({ open, handleClose }) => (
         </Button>
       </div>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ city: "" }}
         validate={(values) => {
           const errors = {};
-          if (!values.email) {
-            errors.email = "Required";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = "Invalid email address";
+          console.log(values, "values");
+          if (!values.city) {
+            errors.city = "Required";
+          } else if (!/[A-Za-z]$/i.test(values.city)) {
+            errors.city = "Invalid city";
           }
+          console.log(errors, "errors");
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            handleOnChangeCity(values.city);
             setSubmitting(false);
           }, 400);
         }}
@@ -74,13 +74,13 @@ const Modal = ({ open, handleClose }) => (
             onSubmit={handleSubmit}
           >
             <TextField
-              type="email"
-              name="email"
+              type="city"
+              name="city"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.email}
+              value={values.city}
             />
-            {errors.email && touched.email && errors.email}
+            {errors.city && touched.city && errors.city}
             <Button
               sx={{ color: "black" }}
               type="submit"
@@ -88,7 +88,7 @@ const Modal = ({ open, handleClose }) => (
             >
               Submit
             </Button>
-            <Typography>{}</Typography>
+            <Typography>{temp}</Typography>
           </form>
         )}
       </Formik>
