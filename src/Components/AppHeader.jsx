@@ -1,7 +1,7 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button, Typography } from "@mui/material";
 
-export const AppHeader = () => {
+export const AppHeader = ({ handleOpen }) => {
   return (
     <div
       style={{
@@ -16,7 +16,7 @@ export const AppHeader = () => {
       <Typography variant="h3" sx={{ color: "white" }}>
         Weather App
       </Typography>
-      <Button onClick={() => {}} sx={{ color: "white" }}>
+      <Button onClick={handleOpen} sx={{ color: "white" }}>
         <MenuIcon />
       </Button>
     </div>
