@@ -8,6 +8,9 @@ function App() {
   const handleOpen = () => {
     setOpen(true);
   };
+  const handleClose = () => {
+    setOpen(false);
+  };
   //https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=de9ddf67504f64bc6826beba0df4bb42
   return (
     <div>
@@ -26,7 +29,7 @@ function App() {
           To check the weather click Menu Button, please...
         </Typography>
       </div>
-      <Modal open={open} />
+      <Modal open={open} handleClose={handleClose} />
     </div>
   );
 }
